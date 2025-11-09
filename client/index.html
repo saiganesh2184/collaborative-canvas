@@ -1,0 +1,52 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Collaborative Canvas</title>
+  <link rel="stylesheet" href="/client/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">🎨 Collaborative Canvas</div>
+      <div class="status">
+        <span id="room">room:lobby</span>
+        <span id="latency">—</span>
+        <span id="fps">—</span>
+        <span id="users">—</span>
+      </div>
+    </header>
+
+    <aside class="toolbar">
+      <div class="tool-group">
+        <button id="tool-brush" class="tool active" title="Brush (B)">🖌️</button>
+        <button id="tool-eraser" class="tool" title="Eraser (E)">🩹</button>
+      </div>
+      <div class="tool-group">
+        <label>Color <input id="color" type="color" value="#0ea5e9"/></label>
+      </div>
+      <div class="tool-group">
+        <label>Width <input id="width" type="range" min="1" max="40" value="6"/></label>
+      </div>
+      <div class="tool-group">
+        <button id="undo" title="Global Undo (Ctrl/⌘+Z)">↶ Undo</button>
+        <button id="redo" title="Global Redo (Ctrl/⌘+Y)">↷ Redo</button>
+        <button id="clear" title="Clear (admin)">🗑️ Clear</button>
+      </div>
+      <div class="tool-group">
+        <label>Room <input id="room-input" placeholder="lobby" /></label>
+        <button id="join-room">Join</button>
+      </div>
+      <div class="users" id="user-list"></div>
+    </aside>
+
+    <main class="stage">
+      <canvas id="canvas"></canvas>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="module" src="/client/main.js"></script>
+</body>
+</html>
